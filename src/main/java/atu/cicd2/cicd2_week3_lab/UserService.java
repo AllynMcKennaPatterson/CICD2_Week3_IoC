@@ -14,5 +14,6 @@ public class UserService {
 
     public void registerUser(String username, String email) {
         emailService.sendEmail(email, "Welcome to our platform " + username);
+        System.out.println("Username: " + username +"    " + "Email: " + email);
     }
 }

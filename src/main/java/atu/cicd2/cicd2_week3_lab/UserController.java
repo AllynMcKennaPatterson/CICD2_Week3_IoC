@@ -7,8 +7,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-    @Autowired
     private UserService myUserService;
+
+    @Autowired
+    public void userRegister(UserService myUserService){
+        this.myUserService = myUserService;
+    }
 
     public void userRegister(String name, String email){
         myUserService.registerUser(name, email);

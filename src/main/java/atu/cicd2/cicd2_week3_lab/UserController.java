@@ -1,9 +1,8 @@
 package atu.cicd2.cicd2_week3_lab;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -14,12 +13,14 @@ public class UserController {
         this.myUserService = myUserService;
     }
 
-    public void userRegister(String name, String email){
+    @GetMapping("/registerUser/{name}/{email}")
+    public void registerUsers(@PathVariable String name, @PathVariable String email){
         myUserService.registerUser(name, email);
     }
 
-    @GetMapping("/registerUser/{name}/{email}")
-    public void registerUsers(@PathVariable String name, @PathVariable String email){
-        userRegister(name, email);
+    @PostMapping("registerUserBody")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void registerUserBody() {
+
     }
 }
